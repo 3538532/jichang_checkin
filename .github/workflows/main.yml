@@ -1,8 +1,8 @@
-name: "Common airport Checkin 2"
+name: "Common airport Checkin"
 
 on:
   schedule:
-    - cron: "24 22 * * *"  # scheduled at 06:10 (UTC+8) everyday
+    - cron: "24 22 * * *"  # scheduled at 06:00 (UTC+8) everyday
   workflow_dispatch:
 
 env:
@@ -35,9 +35,9 @@ jobs:
           pip install -r requirements.txt
       - name: Run sign
         env:
-          URL: ${{ secrets.URL_G }}
+          URL: ${{ secrets.URL }}
           SCKEY: ${{ secrets.SCKEY }}
-          EMAIL: ${{ secrets.EMAIL_G }}
-          PASSWD: ${{ secrets.PASSWD_G }}
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWD: ${{ secrets.PASSWD }}
         run: |
           python3 ./main.py
