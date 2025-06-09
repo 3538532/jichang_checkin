@@ -1,8 +1,8 @@
-name: "Common airport Checkin"
+name: "Common airport Checkin 2"
 
 on:
   schedule:
-    - cron: "25 22 * * *"  # scheduled at 06:00 (UTC+8) everyday
+    - cron: "27 22 * * *"  # scheduled at 06:00 (UTC+8) everyday
   workflow_dispatch:
 
 env:
