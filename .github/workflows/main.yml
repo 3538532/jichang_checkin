@@ -57,5 +57,7 @@ jobs:
           EMAIL: ${{ secrets.EMAIL }}
           PASSWD: ${{ secrets.PASSWD }}
           CONFIG: ${{ secrets.CONFIG }}
+          # 设置后优先用 Cookie 直接签到，跳过账号密码与验证码（推荐）
+          COOKIE: ${{ secrets.COOKIE }}
         run: |
           python3 ./main.py
