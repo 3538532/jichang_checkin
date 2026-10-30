@@ -23,7 +23,10 @@ jobs:
       - name: Set up python
         uses: actions/setup-python@v6
         with:
-          python-version: 3.10.16
+          # 只写 minor 版本，由 setup-python 挑选该系列最新可用 patch。
+          # 原因：ubuntu-latest 自 2026-10-19 起迁移到 Ubuntu 26.04，
+          # 新镜像只提供 3.10.20~3.10.22，写死 3.10.16 会 "not found in the local cache" 而失败。
+          python-version: "3.10"
 
       - name: Random sleep
         if: github.event_name == 'schedule'
