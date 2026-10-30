@@ -36,28 +36,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Fetch latest geeked solver
-        run: |
-          git clone https://github.com/xKiian/GeekedTest.git temp_geeked
-          python -c "
-          with open('temp_geeked/geeked/sign.py', 'r', encoding='utf-8') as f:
-              code = f.read()
-          code = code.replace('from geeked.slide import SlideSolver', 'SlideSolver = None')
-          code = code.replace('from geeked.gobang import GobangSolver', 'GobangSolver = None')
-          code = code.replace('from geeked.icon import IconSolver', 'IconSolver = None')
-          with open('temp_geeked/geeked/sign.py', 'w', encoding='utf-8') as f:
-              f.write(code)
-          "
-          mv temp_geeked/geeked ./geeked
-          rm -rf temp_geeked
+
       - name: Run sign
         env:
           URL: ${{ secrets.URL }}
           SCKEY: ${{ secrets.SCKEY }}
-          EMAIL: ${{ secrets.EMAIL }}
-          PASSWD: ${{ secrets.PASSWD }}
-          CONFIG: ${{ secrets.CONFIG }}
-          # 设置后优先用 Cookie 直接签到，跳过账号密码与验证码（推荐）
+          # 只需这一项：浏览器 Cookie，用来跳过账号密码与极验验证码
           COOKIE: ${{ secrets.COOKIE }}
         run: |
           python3 ./main.py
