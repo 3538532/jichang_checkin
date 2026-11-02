@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+# 维护提示：GitHub 公开仓库若连续 60 天没有任何提交，Actions 的 schedule
+# 会被自动停用（只更新 Secret 不算活动）。因此每 60 天内需至少提交一次。
+# 最近一次保活提交：2026-11-02
 """机场自动签到（仅 Cookie 模式）
 
 工作方式：把浏览器里已登录的 Cookie 放进仓库 Secret COOKIE，
